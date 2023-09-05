@@ -1,0 +1,11 @@
+model = Sequential()
+model.add(LSTM(50, return_sequences=True, input_shape=(X_train.shape[1], 1)))
+model.add(LSTM(50, return_sequences=False))
+model.add(Dense(25))
+model.add(Dense(1))
+
+# compile model
+model.compile(optimizer='adam', loss='mean_squared_error')
+
+# train model
+history = model.fit(X_train, y_train, batch_size=8, epochs=10)
