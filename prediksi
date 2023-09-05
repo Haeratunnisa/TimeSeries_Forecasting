@@ -1,0 +1,13 @@
+# create prediction
+predicted_price1 = model.predict(X_train)
+predicted_price = model.predict(X_test)
+
+# invert prediction
+predicted_price1 = scaler.inverse_transform(predicted_price1).flatten()
+predicted_price = scaler.inverse_transform(predicted_price).flatten()
+
+# calculate root mean squared error
+trainScore = math.sqrt(mean_squared_error(predicted_price1, y_train))
+print('Train Score: %.2f RMSE' % (trainScore))
+testScore = math.sqrt(mean_squared_error(predicted_price, y_test))
+print('Test Score: %.2f RMSE' % (testScore))
